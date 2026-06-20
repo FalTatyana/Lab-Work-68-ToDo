@@ -1,9 +1,12 @@
+
+
 interface TodoCardProps {
     title: string;
     completed: boolean;
 }
 
 const TodoCard = ({ title, completed }: TodoCardProps) => {
+
     return (
         <div className="card mb-2">
             <div className="card-body d-flex justify-content-between align-items-center">
@@ -20,7 +23,7 @@ const TodoCard = ({ title, completed }: TodoCardProps) => {
                             opacity: completed ? 0.6 : 1,
                         }}
                     >
-                        {title}Hello
+                        {title}
                     </span>
                 </div>
 
@@ -33,3 +36,4 @@ const TodoCard = ({ title, completed }: TodoCardProps) => {
 };
 
 export default TodoCard;
+

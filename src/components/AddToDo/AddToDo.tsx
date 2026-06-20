@@ -4,7 +4,7 @@ const AddTodo = () => {
   const [text, setText] = useState("");
 
   return (
-    <div className="input-group mb-3">
+    <div className="input-group mb-5">
       <input
         type="text"
         className="form-control"
@@ -17,7 +17,7 @@ const AddTodo = () => {
         className="btn btn-primary"
         type="button"
       >
-        Add
+        Add new To Do
       </button>
     </div>
   );

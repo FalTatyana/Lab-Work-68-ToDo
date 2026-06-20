@@ -1,7 +1,7 @@
 import { ToastContainer } from 'react-toastify'
 import Header from './components/Header/Header'
-import AddTodo from './components/Header/AddToDo/AddToDo'
-import TodoCard from './components/TodoCard/ToDoCard'
+import AddTodo from './components/AddToDo/AddToDo'
+import TodoList from './components/TodoList/TodoList'
 
 function App() {
 
@@ -10,7 +10,7 @@ function App() {
       <Header />
       <div className='container mt-5'>
         <AddTodo />
-        <TodoCard title={''} completed={false} />
+        <TodoList/>
       </div>
       <ToastContainer
         position="top-right"

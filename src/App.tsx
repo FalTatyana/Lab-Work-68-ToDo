@@ -10,7 +10,9 @@ function App() {
       <Header />
       <div className='container mt-5'>
         <AddTodo />
-        <TodoList/>
+        <div className='d-flex flex-column-reverse'>
+          <TodoList />
+        </div>
       </div>
       <ToastContainer
         position="top-right"

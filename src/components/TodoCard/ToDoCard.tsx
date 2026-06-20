@@ -1,11 +1,11 @@
-
-
 interface TodoCardProps {
     title: string;
     completed: boolean;
+    onClick: () => void;
+    onChange: () => void;
 }
 
-const TodoCard = ({ title, completed }: TodoCardProps) => {
+const TodoCard = ({ title, completed, onClick, onChange }: TodoCardProps) => {
 
     return (
         <div className="card mb-2">
@@ -15,7 +15,7 @@ const TodoCard = ({ title, completed }: TodoCardProps) => {
                         type="checkbox"
                         className="form-check-input"
                         checked={completed}
-                        readOnly
+                        onChange={onChange}
                     />
                     <span
                         style={{
@@ -27,7 +27,7 @@ const TodoCard = ({ title, completed }: TodoCardProps) => {
                     </span>
                 </div>
 
-                <button className="btn btn-danger btn-sm">
+                <button onClick={onClick} className="btn btn-danger btn-sm">
                     <i className="bi bi-trash"></i>
                 </button>
             </div>

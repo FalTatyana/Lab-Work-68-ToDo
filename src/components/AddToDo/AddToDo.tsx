@@ -3,6 +3,7 @@ import type { PostTodo } from "../../types";
 import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../../App/store";
 import { addTodo } from "../../pages/TodoSlice";
+import { toast } from "react-toastify";
 
 const AddTodo = () => {
   const [todo, setTodo] = useState<PostTodo>({
@@ -20,7 +21,18 @@ const AddTodo = () => {
 
   const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault(); 
+
+    if (todo.title.trim().length === 0) {
+      toast.error('Enter some symbols for add');
+      return;
+    }
+
     dispatch(addTodo(todo)); 
+    const reset = {
+      title: '',
+      completed: false
+    }
+    setTodo(reset);
   }
 
   return (

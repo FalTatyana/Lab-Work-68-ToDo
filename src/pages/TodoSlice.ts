@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { Todo } from "../types";
+import type { PostTodo, Todo } from "../types";
 import axiosApi from "../components/AxiosApi/AxiosApi";
 
 interface TodoState {
@@ -14,7 +14,9 @@ const initialState: TodoState = {
   error: false,
 };
 
-export const fetchTodo = createAsyncThunk("todo,fetch", async () => {
+export const fetchTodo = createAsyncThunk(
+  "todo,fetch", 
+  async () => {
   const response = await axiosApi.get<Record<string, Todo> | null>("/todos.json");
 
   const data = response.data;
@@ -22,16 +24,25 @@ export const fetchTodo = createAsyncThunk("todo,fetch", async () => {
   if (!data) {
     return [];
   }
-
-  const result = Object.keys(data).map((id) => {
+  
+  const result = Object.keys(data).map((todo) => {    
     return {
-      id,
-      ...data[id],
+      key: data[todo].title,
+      todo,
+      ...data[todo],
     };
   });
 
   return result;
 });
+
+export const addTodo = createAsyncThunk(
+  "todo, post",
+  async (todo: PostTodo, { dispatch }) => {
+    await axiosApi.post<Record<string, Todo> | null>("/todos.json", todo);
+    dispatch(fetchTodo());
+  }
+);
 
 const todoSlice = createSlice({
   name: "todo",

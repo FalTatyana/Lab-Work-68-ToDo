@@ -13,10 +13,11 @@ const TodoList = () => {
         dispatch(fetchTodo());
     }, [dispatch])
 
+
     return todos && (
         <>
             {todos.map(todo => (
-                <TodoCard key={todo.id} title={todo.title} completed={todo.completed} />
+                <TodoCard key={todo.title} title={todo.title} completed={todo.completed} />
             ))
             }
         </>

@@ -3,3 +3,8 @@ export interface Todo {
     title: string;
     completed: boolean;
 }
+
+export interface PostTodo {
+    title: string;
+    completed: boolean;
+}
